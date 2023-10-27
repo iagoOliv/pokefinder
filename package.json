@@ -1,0 +1,15 @@
+{
+  "name": "pokedex",
+  "version": "0.1.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "style": "node-sass src/sass/main.scss public/css/style.css -w"
+  },
+  "author": "Iago Oliveira",
+  "license": "ISC",
+  "dependencies": {
+    "node-sass": "^9.0.0",
+    "live-server": "0.1.20"
+  }
+}

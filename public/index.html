@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PokéFinder</title>
+    <link rel="shortcut icon" href="media/icons/Poke_Ball.webp" type="image/x-icon">
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+    <div class="copyright" onclick="openGithub()">
+        <span>Copyright &copy; Iago de Oliveira</span>
+        <span>Beta Build 0.1.0</span>
+    </div>
+    <div class="container">
+        <div class="header">
+            <h1 class="title"><color class="red">Poké<color><color class="blue">Finder</color></h1>
+            <form class="header__form" action="?limit=" method="GET">
+                <div class="search">
+                    <input type="text" class="search__input" id="search__input" placeholder="Search a pokémon" />
+                    <img src="media/icons/search-outline.svg" alt="" class="search__icon" />
+                </div>
+                <input type="number" class="pokemonsPerPage" id="limit" />
+                <input type="number" class="pokemonsPerPage" id="offset" />
+                <input type="submit" hidden />
+            </form>
+            
+        </div>
+
+        <div class="pokedex" id="root">
+        </div>
+    </div>
+    <script>
+        function openGithub() {
+            window.open("https://github.com/iagoOliv")
+        }
+    </script>
+    <script src="js/index.js"></script>
+</body>
+</html>
