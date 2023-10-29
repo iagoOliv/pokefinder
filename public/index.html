@@ -15,16 +15,27 @@
     <div class="container">
         <div class="header">
             <h1 class="title"><color class="red">Poké<color><color class="blue">Finder</color></h1>
-            <form class="header__form" action="?limit=" method="GET">
+            <!-- The search should use a form for URL params, but how to implement them? -->
+            <div class="header__form" action="?limit=limit" method="GET">
                 <div class="search">
-                    <input type="text" class="search__input" id="search__input" placeholder="Search a pokémon" />
+                    <input type="text" class="input search__input" id="search__input" placeholder="Search a pokémon" />
                     <img src="media/icons/search-outline.svg" alt="" class="search__icon" />
                 </div>
-                <input type="number" class="pokemonsPerPage" id="limit" />
-                <input type="number" class="pokemonsPerPage" id="offset" />
-                <input type="submit" hidden />
-            </form>
-            
+                <input type="number" class="input pokemonsPerPage" id="limit" value="number"/>
+                <input type="number" class="input pokemonsPerPage" id="offset" />
+                <!-- <input type="submit" hidden /> -->
+            </div>
+            <div class="header__generations">
+                <div class="header__generations--generation">I</div>
+                <div class="header__generations--generation">II</div>
+                <div class="header__generations--generation">III</div>
+                <div class="header__generations--generation">IV</div>
+                <div class="header__generations--generation">V</div>
+                <div class="header__generations--generation">VI</div>
+                <div class="header__generations--generation">VII</div>
+                <div class="header__generations--generation">VIII</div>
+                <div class="header__generations--generation">IX</div>
+            </div>
         </div>
 
         <div class="pokedex" id="root">
@@ -35,6 +46,7 @@
             window.open("https://github.com/iagoOliv")
         }
     </script>
+    <script src="js/generations.js"></script>
     <script src="js/index.js"></script>
 </body>
 </html>

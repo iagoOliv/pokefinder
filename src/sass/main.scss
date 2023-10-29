@@ -1,6 +1,7 @@
 @import 'base/base';
 
 @import 'components/copyright';
+@import 'components/logo';
 @import 'components/container';
 @import 'components/pokemon';
 
@@ -17,5 +18,15 @@
 @media screen and (min-width:40rem) and (max-width:60rem){
     .pokedex {
         grid-template-columns: repeat(3, 1fr);
+    }
+}
+
+@media screen and (max-width:30rem) {
+    html {
+        font-size: 50.5%;
+    }
+
+    .pokemon__name {
+        font-size: 1.4rem;
     }
 }

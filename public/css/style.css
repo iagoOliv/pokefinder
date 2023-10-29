@@ -34,15 +34,15 @@ body {
   .copyright:hover {
     background: #94a3b83a; }
 
-.title {
-  font-weight: 800;
-  letter-spacing: .2rem; }
-
 .red {
   color: #dc2626; }
 
 .blue {
   color: #cbd5e1; }
+
+.title {
+  font-weight: 800;
+  letter-spacing: .2rem; }
 
 .container {
   position: absolute;
@@ -69,6 +69,27 @@ body {
   .header__form {
     display: flex;
     gap: .8rem; }
+  .header__generations {
+    display: flex;
+    justify-content: space-between; }
+    .header__generations--generation {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: .4rem;
+      width: 5rem;
+      height: 5rem;
+      border-radius: .4rem;
+      color: #cbd5e1;
+      font-weight: 700;
+      background: #334155; }
+      .header__generations--generation:hover {
+        background: #475569;
+        cursor: pointer; }
+
+.enabled {
+  background: #475569;
+  border: .3rem solid #2563eb; }
 
 input[type="number"] {
   font-size: 2.4rem;
@@ -103,9 +124,6 @@ input::-webkit-outer-spin-button, input::-webkit-inner-spin-button {
   .search__icon {
     height: 100%;
     aspect-ratio: 1/1; }
-
-::placeholder {
-  color: #cbd5e1; }
 
 .pokedex {
   display: grid;
@@ -302,3 +320,9 @@ input::-webkit-outer-spin-button, input::-webkit-inner-spin-button {
 @media screen and (min-width: 40rem) and (max-width: 60rem) {
   .pokedex {
     grid-template-columns: repeat(3, 1fr); } }
+
+@media screen and (max-width: 30rem) {
+  html {
+    font-size: 50.5%; }
+  .pokemon__name {
+    font-size: 1.4rem; } }

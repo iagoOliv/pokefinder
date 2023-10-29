@@ -3,14 +3,6 @@
     letter-spacing: .2rem;
 }
 
-.red {
-    color: #dc2626;
-}
-
-.blue {
-    color: #cbd5e1;
-}
-
 .container {
     position: absolute;
     top: 50%;
@@ -39,6 +31,35 @@
         display: flex;
         gap: .8rem;
     }
+
+    &__generations {
+        display: flex;
+        justify-content: space-between;
+       
+
+        &--generation {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: .4rem;
+            width: 5rem;
+            height: 5rem;
+            border-radius: .4rem;
+            color: #cbd5e1;
+            font-weight: 700;
+            background: #334155;
+
+            &:hover {
+                background: #475569;
+                cursor: pointer;
+            }
+        }
+    }
+}
+
+.enabled {
+    background: #475569;
+    border: .3rem solid #2563eb;
 }
 
 input {
@@ -82,8 +103,4 @@ input {
         height: 100%;
         aspect-ratio: 1/1;
     }
-}
-
-::placeholder {
-        color: #cbd5e1;
 }
