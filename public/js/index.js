@@ -5,7 +5,7 @@ async function search(searchTerm) {
     try {
         const data = await fetch(whichSearch(searchTerm)).then((response) => response.json());
         console.log(data);
-        return data;
+        return [data];
     } catch (error) {
         console.error(`Couldn't fetch the ${searchTerm} pokémon.`, error);
     }
@@ -51,26 +51,12 @@ const searchBox = document.getElementById("search__input");
 
 let globalPreference = 'pokemon';
 let searchTerm = searchBox.value;
+let searching = false;
 
 const _pokemonLimit = document.getElementById("limit");
 const _pokemonOffset = document.getElementById("offset");
 _pokemonLimit.value = 100;
 _pokemonOffset.value = 0;
-
-/*
-// Todo: needs to be implemented with the forms's post http method
-(function parseURLParams() {
-    const urlParams = new URLSearchParams(window.location.search);
-
-    if (urlParams.has('limit') && urlParams.has('offset')) {
-        _pokemonLimit.value = urlParams.get('limit');
-        _pokemonOffset.value = urlParams.get('offset');
-    } else {
-        _pokemonLimit.value = 100;
-        _pokemonOffset.value = 649;
-    }
-})();
-*/
 
 const gallery = {
     render: async (data) => {
@@ -107,7 +93,6 @@ const gallery = {
                     </div>
                 </div>
                 `
-                console.log(`[${i}] Rendered ${name}'s card.`)
             } catch (error) {
                 console.log("Couldn't render this card because of ", error)
             }
@@ -124,9 +109,12 @@ const gallery = {
         // Cleanup
         data = [];
         pokemonImages = [];
+        searching = false;
     },
     search: async () => {
-        searchTerm = searchBox.value;
+        if (searching) { return; }
+
+        searchTerm = searchBox.value.toLowerCase();
 
         // Rendering
         if (searchTerm == "") {
@@ -147,8 +135,6 @@ const gallery = {
         pokedex.forEach(pokemon => {
             pokemon.remove();
         });
-
-        console.clear();
     } // Reload
 }
 
@@ -218,7 +204,6 @@ function renderGenerations() {
         _generations[i].classList.add("disabled");
     
         _generations[i].addEventListener("click", async () => {
-            // * Could this stay in its own function ?
             if (_pokemonOffset.value != _generations[i].getAttribute("offset")) {
                     _generations[i].classList.add("enabled");
                     _pokemonOffset.value = _generations[i].getAttribute("offset");

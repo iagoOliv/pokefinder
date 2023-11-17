@@ -49,26 +49,39 @@ body {
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
-  height: 90%;
+  height: 100%;
   min-width: 35rem;
-  width: 60rem;
+  width: 100%;
+  max-width: 140rem;
   padding: 3.4rem;
   overflow-y: auto;
   background: #1e293b;
   border-radius: 1.6rem;
   display: flex;
   flex-direction: column;
-  align-items: center;
+  align-items: start;
   gap: 3.2rem; }
 
 .header {
   display: flex;
   flex-direction: column;
-  gap: .8rem;
-  width: 100%; }
+  gap: 1.6rem;
+  width: 60rem; }
+  .header__wrapper {
+    display: flex;
+    gap: 1.6rem; }
   .header__form {
     display: flex;
-    gap: .8rem; }
+    flex-direction: column;
+    gap: .8rem;
+    background: #334155;
+    padding: 1.6rem;
+    border-radius: .8rem; }
+  .header__options {
+    display: flex;
+    align-items: center;
+    gap: .8rem;
+    color: #cbd5e1; }
   .header__generations {
     display: flex;
     justify-content: space-between; }
@@ -91,19 +104,23 @@ body {
   background: #475569;
   border: .3rem solid #2563eb; }
 
-input[type="number"] {
-  font-size: 2.4rem;
-  font-weight: 700;
-  width: 8rem;
-  border-radius: .8rem;
-  background: #334155;
-  border: none;
-  color: #cbd5e1; }
-
-input::-webkit-outer-spin-button, input::-webkit-inner-spin-button {
-  appearance: none;
-  -moz-appearance: none;
-  -webkit-appearance: none; }
+input {
+  color: #cbd5e1;
+  background: #475569; }
+  input[type="number"] {
+    font-size: 2.4rem;
+    font-weight: 700;
+    width: 8rem;
+    border-radius: .8rem;
+    border: none;
+    color: #cbd5e1;
+    text-align: center; }
+  input::placeholder {
+    color: #cbd5e1; }
+  input::-webkit-outer-spin-button, input::-webkit-inner-spin-button {
+    appearance: none;
+    -moz-appearance: none;
+    -webkit-appearance: none; }
 
 .search {
   height: 5.2rem;
@@ -112,7 +129,7 @@ input::-webkit-outer-spin-button, input::-webkit-inner-spin-button {
   border-radius: .8rem;
   border: .2rem solid none;
   color: #cbd5e1;
-  background: #334155;
+  background: #475569;
   display: flex;
   gap: .8rem;
   justify-content: space-between; }
@@ -127,7 +144,7 @@ input::-webkit-outer-spin-button, input::-webkit-inner-spin-button {
 
 .pokedex {
   display: grid;
-  grid-template-columns: repeat(2, 1fr);
+  grid-template-columns: repeat(5, 1fr);
   grid-template-rows: auto;
   gap: .8rem;
   height: 100%;
@@ -135,8 +152,8 @@ input::-webkit-outer-spin-button, input::-webkit-inner-spin-button {
 
 .pokemon {
   position: relative;
-  width: calc(100% / .2rem);
-  height: auto;
+  width: 100%;
+  height: fit-content;
   color: #cbd5e1;
   display: flex;
   flex-direction: column;
@@ -144,6 +161,7 @@ input::-webkit-outer-spin-button, input::-webkit-inner-spin-button {
   gap: 1.6rem;
   background: #334155;
   border-radius: .8rem;
+  animation: appearFromBottom 300ms ease-in-out backwards;
   transition: all 0.05s ease-in-out; }
   .pokemon::before {
     content: "";
@@ -183,6 +201,8 @@ input::-webkit-outer-spin-button, input::-webkit-inner-spin-button {
     box-shadow: 0 0 1.6rem #e048f7; }
   .pokemon[type="ghost"]:hover {
     box-shadow: 0 0 1.6rem #0f0e26; }
+  .pokemon[type="dark"]:hover {
+    box-shadow: 0 0 1.6rem black; }
   .pokemon[type="fighting"]:hover {
     box-shadow: 0 0 1.6rem #b21d1d; }
   .pokemon[type="steel"]:hover {
@@ -225,7 +245,8 @@ input::-webkit-outer-spin-button, input::-webkit-inner-spin-button {
   .pokemon__image {
     z-index: 1;
     cursor: pointer;
-    width: calc(100% / 1.5); }
+    width: calc(100% / 1.5);
+    min-width: calc(100% / 1.5); }
   .pokemon__attributes {
     width: 100%;
     display: flex;
@@ -237,25 +258,11 @@ input::-webkit-outer-spin-button, input::-webkit-inner-spin-button {
   .pokemon__attribute--title {
     font-weight: 600; }
 
-@keyframes rainbowNumber {
+@keyframes appearFromBottom {
   0% {
-    color: #ef4444; }
-  12.5% {
-    color: #f97316; }
-  25% {
-    color: #eab308; }
-  37.5% {
-    color: #84cc16; }
-  50% {
-    color: #10b981; }
-  62.5% {
-    color: #06b6d4; }
-  75% {
-    color: #3b82f6; }
-  87.2% {
-    color: #6366f1; }
+    transform: translateY(8px); }
   100% {
-    color: #ef4444; } }
+    transform: translateY(0); } }
 
 .fire {
   background-color: #f97316;
@@ -309,6 +316,10 @@ input::-webkit-outer-spin-button, input::-webkit-inner-spin-button {
   background-color: #1e1b4b;
   box-shadow: 0 0 1.6rem #1e1b4b; }
 
+.dark {
+  background-color: #09090b;
+  box-shadow: 0 0 1.6rem #09090b; }
+
 .fighting {
   background-color: #dc2626;
   box-shadow: 0 0 1.6rem #dc2626; }
@@ -324,18 +335,26 @@ input::-webkit-outer-spin-button, input::-webkit-inner-spin-button {
 .dragon {
   background-color: #a78bfa; }
 
-@media screen and (max-width: 60rem) {
+@media screen and (max-width: 55rem) {
   .container {
     width: 100%;
     height: 100%;
-    border-radius: 0; } }
-
-@media screen and (min-width: 40rem) and (max-width: 60rem) {
+    border-radius: 0; }
+  .header {
+    width: 100%; }
   .pokedex {
     grid-template-columns: repeat(3, 1fr); } }
 
-@media screen and (max-width: 30rem) {
+@media screen and (min-width: 55rem) and (max-width: 75rem) {
+  .pokedex {
+    grid-template-columns: repeat(4, 1fr); } }
+
+@media screen and (max-width: 40rem) {
   html {
-    font-size: 50.5%; }
+    font-size: 55%; }
+  .pokedex {
+    grid-template-columns: repeat(2, 1fr); }
+  .header {
+    width: 100%; }
   .pokemon__name {
     font-size: 1.4rem; } }

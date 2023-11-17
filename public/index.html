@@ -4,8 +4,10 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="author" content="Iago Oliveira">
-    <meta name="description" content="Implementação Pokédex em JavaScript Vanilla. É um treino comum no Front-end!">
     <meta name="keywords" content="Pokedex, Pokédex, Pokemon, Pokémon, PokeAPI, PokéAPI, JavaScript, SASS, Front-End, Training">
+    <meta name="og:description" content="Implementação Pokédex em JavaScript Vanilla com SASS. É um treino comum no Front-end!">
+    <meta name="og:title" content="PokéFinder">
+    <meta name="og:image" content="media/preview.png">
     <title>PokéFinder</title>
     <link rel="shortcut icon" href="media/icons/Poke_Ball.webp" type="image/x-icon">
     <link rel="stylesheet" href="css/style.css">
@@ -13,7 +15,7 @@
 <body>
     <div class="copyright" onclick="openGithub()">
         <span>Copyright &copy; Iago de Oliveira</span>
-        <span>Ver 1.0</span>
+        <span>Ver 1.1</span>
     </div>
     <div class="container">
         <div class="header">
@@ -24,8 +26,10 @@
                     <input type="text" class="input search__input" id="search__input" placeholder="Search a pokémon" />
                     <img src="media/icons/search-outline.svg" alt="" class="search__icon" />
                 </div>
-                <input type="number" class="input pokemonsPerPage" id="limit" value="number"/>
-                <input type="number" class="input pokemonsPerPage" id="offset" />
+                <div class="header__wrapper">
+                    <div class="header__options"><span>Per Page</span><input type="number" class="input pokemonsPerPage" id="limit"/></div>
+                    <div class="header__options"><span>Start from</span><input type="number" class="input pokemonsPerPage" id="offset" /></div>
+                </div>
                 <!-- <input type="submit" hidden /> -->
             </div>
             <div class="header__generations">

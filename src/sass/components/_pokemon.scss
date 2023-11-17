@@ -2,7 +2,7 @@ $card-padding: 2.4rem;
 
 .pokedex {
     display: grid;
-    grid-template-columns: repeat(2, 1fr);
+    grid-template-columns: repeat(5, 1fr);
     grid-template-rows: auto;
     gap: .8rem;
     height: 100%;
@@ -11,8 +11,8 @@ $card-padding: 2.4rem;
 
 .pokemon {
     position: relative;
-    width: calc(100% / .2rem);
-    height: auto;
+    width: 100%;
+    height: fit-content;
     color: #cbd5e1;
     display: flex;
     flex-direction: column;
@@ -20,6 +20,7 @@ $card-padding: 2.4rem;
     gap: 1.6rem;
     background: #334155;
     border-radius: .8rem;
+    animation: appearFromBottom 300ms ease-in-out backwards;
 
     &::before {
         content: "";
@@ -93,6 +94,10 @@ $card-padding: 2.4rem;
         box-shadow: 0 0 1.6rem darken(#1e1b4b, 10);
     }
 
+    &[type="dark"]:hover {
+        box-shadow: 0 0 1.6rem darken(#09090b, 10);
+    }
+
     &[type="fighting"]:hover {
         box-shadow: 0 0 1.6rem darken(#dc2626, 10);
     }
@@ -154,6 +159,7 @@ $card-padding: 2.4rem;
         z-index: 1;
         cursor: pointer;
         width: calc(100% / 1.5);
+        min-width: calc(100% / 1.5);
     }
 
     &__attributes {
@@ -173,32 +179,11 @@ $card-padding: 2.4rem;
     }
 }
 
-@keyframes rainbowNumber {
+@keyframes appearFromBottom {
     0% {
-        color: #ef4444;
-    }
-    12.5% {
-        color: #f97316; 
-    }
-    25% {
-        color: #eab308; 
-    }
-    37.5% {
-        color: #84cc16; 
-    }
-    50% {
-        color: #10b981; 
-    }
-    62.5% {
-        color: #06b6d4; 
-    }
-    75% {
-        color: #3b82f6; 
-    }
-    87.2% {
-        color: #6366f1;
+        transform: translateY(8px);
     }
     100% {
-        color: #ef4444;
+        transform: translateY(0);
     }
 }

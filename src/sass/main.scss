@@ -7,23 +7,39 @@
 
 @import 'abstracts/types';
 
-@media screen and (max-width:60rem) {
+@media screen and (max-width:55rem) {
     .container {
         width: 100%;
         height: 100%;
         border-radius: 0;
     }
-}
 
-@media screen and (min-width:40rem) and (max-width:60rem){
+    .header {
+        width: 100%;
+    }
+    
     .pokedex {
         grid-template-columns: repeat(3, 1fr);
     }
 }
 
-@media screen and (max-width:30rem) {
+@media screen and (min-width:55rem) and (max-width:75rem){
+    .pokedex {
+        grid-template-columns: repeat(4, 1fr);
+    }
+}
+
+@media screen and (max-width:40rem) {
     html {
-        font-size: 50.5%;
+        font-size: 55%;
+    }
+
+    .pokedex {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    .header { 
+        width: 100%;
     }
 
     .pokemon__name {
