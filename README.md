@@ -3,6 +3,8 @@ PokéFinder is a Pokédex implementation made in Vanilla JavaScript with SASS St
 
 It uses the [PokéAPI](https://pokeapi.co/).
 
+![PokéFinder screenshot](public/media/preview.png)
+
 # Quick Guide
 
 ## Starting the live server
